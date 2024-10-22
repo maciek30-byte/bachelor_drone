@@ -1,0 +1,9 @@
+{
+  "name": "indicent_menager",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/indicent_menager/src",
+  "projectType": "application",
+  "tags": ["type:app"],
+  "// targets": "to see all targets run: nx show project indicent_menager --web",
+  "targets": {}
+}

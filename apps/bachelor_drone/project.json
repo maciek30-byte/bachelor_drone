@@ -1,9 +1,9 @@
 {
-  "name": "bachelor_drone",
+  "name": "drone_ui",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/bachelor_drone/src",
   "projectType": "application",
-  "tags": [],
+  "tags": ["type:app"],
   "// targets": "to see all targets run: nx show project bachelor_drone --web",
   "targets": {}
 }

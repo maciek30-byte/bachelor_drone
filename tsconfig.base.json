@@ -14,7 +14,10 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@bachelor-drone/map": ["libs_fe/map/src/index.ts"],
+      "@bachelor-drone/ui-components": ["libs_fe/ui-components/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
