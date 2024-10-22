@@ -2,7 +2,10 @@
   "name": "@bachelor-drone/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "format:check": "prettier --check .",
+    "lint": "eslint ."
+  },
   "private": true,
   "dependencies": {
     "react": "18.3.1",

@@ -2,5 +2,13 @@
   "name": "@bachelor-drone/map",
   "version": "0.0.1",
   "dependencies": {},
-  "private": true
+  "private": true,
+  "targets": {
+    "format:check": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "prettier --check ."
+      }
+    }
+  }
 }

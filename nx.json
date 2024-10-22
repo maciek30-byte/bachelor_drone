@@ -57,5 +57,19 @@
     "api-client": {
       "tags": ["lib"]
     }
+  },
+  "targets": {
+    "format:check": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "prettier --check ."
+      }
+    },
+    "lint": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "eslint ."
+      }
+    }
   }
 }
