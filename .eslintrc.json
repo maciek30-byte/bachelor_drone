@@ -5,6 +5,7 @@
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      "extends": ["plugin:@nx/typescript", "plugin:react/recommended"],
       "rules": {
         "@nx/enforce-module-boundaries": [
           "error",

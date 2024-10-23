@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "format": "nx format:write",
-    "lint": "eslint . --fix",
+    "lint": "nx run-many --target=lint --all",
     "test": "nx run-many --target=test --all --testPathPattern=__tests__"
   },
   "dependencies": {
