@@ -23,6 +23,7 @@ jobs:
         uses: pnpm/action-setup@v2
         with:
           version: 8
+          run_install: false
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -31,10 +32,11 @@ jobs:
           cache: 'pnpm'
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
 
       - name: Check formatting
-        run: pnpm nx format:check --all
+        run: |
+          pnpm prettier --check "**/*.{ts,tsx,js,jsx,json,css,scss,md,yaml,yml}"
 
       - name: Run ESLint
         run: pnpm nx affected:lint
