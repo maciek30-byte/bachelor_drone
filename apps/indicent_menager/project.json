@@ -5,13 +5,19 @@
   "projectType": "application",
   "tags": ["type:app"],
   "// targets": "to see all targets run: nx show project indicent_menager --web",
- "targets": {
+  "targets": {
     "test": {
       "executor": "@nx/vite:test",
       "outputs": ["{projectRoot}/coverage"],
       "options": {
         "passWithNoTests": true,
         "reportsDirectory": "../../coverage/apps/indicent_menager"
+      }
+    },
+    "format": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "prettier --write \"apps/indicent_menager/**/*.{ts,tsx,js,jsx,json,css,scss,md}\""
       }
     }
   }

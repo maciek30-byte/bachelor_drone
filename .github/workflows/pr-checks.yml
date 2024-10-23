@@ -2,32 +2,32 @@ name: PR Checks
 
 on:
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
   pr-checks:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-      with:
-        fetch-depth: 0
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
-    - name: Use Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '18'
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
 
-    - name: Install dependencies
-      run: pnpm install
+      - name: Install dependencies
+        run: pnpm install
 
-    - name: Determine affected projects
-      id: affected
-      run: |
-        AFFECTED=$(npx nx print-affected --select=projects --base=origin/master)
-        echo "affected=$AFFECTED" >> $GITHUB_OUTPUT
+      - name: Determine affected projects
+        id: affected
+        run: |
+          AFFECTED=$(npx nx print-affected --select=projects --base=origin/master)
+          echo "affected=$AFFECTED" >> $GITHUB_OUTPUT
 
-    - name: Run Prettier
-      run: npx nx affected --target=format:check --base=origin/master
+      - name: Run Prettier
+        run: npx nx affected --target=format:check --base=origin/master
 
-    - name: Run ESLint
-      run: npx nx affected --target=lint --base=origin/master
+      - name: Run ESLint
+        run: npx nx affected --target=lint --base=origin/master

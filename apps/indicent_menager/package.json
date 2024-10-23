@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "prettier": "prettier --write .",
-    "lint": "eslint . --fix",
-    "test": "jest"
+    "format": "nx format:write",
+    "lint": "nx lint",
+    "test": "nx test"
   },
   "keywords": [],
   "author": "",

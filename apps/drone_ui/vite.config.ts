@@ -7,8 +7,8 @@ import packageJson from './package.json';
 export default defineConfig({
   //base parameter we could use to set the base url of the application//
   build: {
-    outDir: "dist",
-    assetsDir: "assets",
+    outDir: 'dist',
+    assetsDir: 'assets',
     minify: true,
     sourcemap: true,
   },
@@ -20,14 +20,17 @@ export default defineConfig({
   test: {
     globals: true,
     cache: {
-      dir: '../../node_modules/.vitest'
+      dir: '../../node_modules/.vitest',
     },
     environment: 'jsdom',
-    include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}', 'src/**/__tests__/**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
+    include: [
+      'src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}',
+      'src/**/__tests__/**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}',
+    ],
     reporters: ['default'],
     coverage: {
       reportsDirectory: '../../coverage/apps/drone_ui',
-      provider: 'v8'
-    }
-  }
+      provider: 'v8',
+    },
+  },
 });

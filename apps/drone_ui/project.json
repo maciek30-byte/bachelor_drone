@@ -12,6 +12,12 @@
       "options": {
         "passWithNoTests": true
       }
+    },
+    "format": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "prettier --write \"apps/drone_ui/**/*.{ts,tsx,js,jsx,json,css,scss,md}\""
+      }
     }
   }
 }

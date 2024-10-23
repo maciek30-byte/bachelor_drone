@@ -3,11 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-
- "scripts": {
-  "prettier": "prettier --write .",
-  "lint": "eslint . --fix",
-  "test": "jest"
+  "scripts": {
+    "format": "nx format:write",
+    "lint": "nx lint",
+    "test": "nx test"
   },
   "keywords": [],
   "author": "",
