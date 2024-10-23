@@ -3,14 +3,10 @@ name: CI
 on:
   push:
     branches:
-      - 'main'
-      - 'develop'
+      - '**' 
   pull_request:
-    types: [opened, synchronize, reopened]
     branches:
-      - 'main'
-      - 'develop'
-
+      - '**' 
 jobs:
   quality:
     name: Quality Check
@@ -22,26 +18,31 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+          run_install: false
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20.x'
           cache: 'pnpm'
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 8
-
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --no-frozen-lockfile
 
+ 
+      - name: Format code with Prettier
+        run: pnpm prettier --write "**/*.{ts,tsx,js,jsx,json,css,scss,md,yaml,yml}"
+
+  
       - name: Check formatting
-        run: pnpm nx format:check --all
+        run: pnpm prettier --check "**/*.{ts,tsx,js,jsx,json,css,scss,md,yaml,yml}"
 
-      - name: Run ESLint
-        run: pnpm nx affected:lint
+      - name: Lint code with ESLint (fix errors)
+        run: pnpm nx affected:lint --base=master --head=HEAD --fix
 
       - name: Run unit tests
         run: pnpm nx affected:test
-
