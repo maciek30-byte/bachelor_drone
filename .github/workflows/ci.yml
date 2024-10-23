@@ -34,6 +34,12 @@ jobs:
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
 
+      # Krok: Automatyczne naprawianie błędów formatowania
+      - name: Fix formatting issues
+        run: |
+          pnpm prettier --write "**/*.{ts,tsx,js,jsx,json,css,scss,md,yaml,yml}"
+
+      # Krok: Sprawdzanie formatowania (po automatycznych poprawkach)
       - name: Check formatting
         run: |
           pnpm prettier --check "**/*.{ts,tsx,js,jsx,json,css,scss,md,yaml,yml}"
