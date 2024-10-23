@@ -3,40 +3,45 @@ name: CI
 on:
   push:
     branches:
-      - '**'
+      - 'main'
+      - 'develop'
   pull_request:
+    types: [opened, synchronize, reopened]
     branches:
-      - '**'
+      - 'main'
+      - 'develop'
 
 jobs:
-  ci:
+  quality:
+    name: Quality Check
     runs-on: ubuntu-latest
 
     steps:
-      - name: Sprawdzenie repozytorium
+      - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Ustawienie Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20.x'
           cache: 'pnpm'
 
-      - name: Instalacja pnpm
+      - name: Install pnpm
         uses: pnpm/action-setup@v2
         with:
           version: 8
 
-      - name: Instalacja zależności
+      - name: Install dependencies
         run: pnpm install
 
-      - name: Uruchomienie Prettiera
-        run: pnpm run format
+      - name: Check formatting
+        run: pnpm nx format:check --all
 
-      - name: Uruchomienie ESLinta
-        run: pnpm run lint
+      - name: Run ESLint
+        run: pnpm nx affected:lint
 
-      - name: Uruchomienie testów jednostkowych
-        run: pnpm run test
+      - name: Run unit tests
+        run: pnpm nx affected:test
+
