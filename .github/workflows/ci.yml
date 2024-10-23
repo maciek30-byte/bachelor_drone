@@ -3,11 +3,10 @@ name: CI
 on:
   push:
     branches:
-      - '**'  # sprawdza wszystkie gałęzie
+      - '**' 
   pull_request:
     branches:
-      - '**'  # sprawdza PR do wszystkich gałęzi
-
+      - '**' 
 jobs:
   quality:
     name: Quality Check
@@ -34,18 +33,16 @@ jobs:
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
 
-      # Automatyczna naprawa błędów formatowania z Prettierem
+ 
       - name: Format code with Prettier
         run: pnpm prettier --write "**/*.{ts,tsx,js,jsx,json,css,scss,md,yaml,yml}"
 
-      # Sprawdzanie formatowania po próbie naprawy
+  
       - name: Check formatting
         run: pnpm prettier --check "**/*.{ts,tsx,js,jsx,json,css,scss,md,yaml,yml}"
 
-      # Automatyczna naprawa błędów ESLint, o ile to możliwe
       - name: Lint code with ESLint (fix errors)
-        run: pnpm nx affected:lint --fix
+        run: pnpm nx affected:lint --base=master --head=HEAD --fix
 
-      # Uruchomienie testów jednostkowych
       - name: Run unit tests
         run: pnpm nx affected:test
