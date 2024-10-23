@@ -3,47 +3,40 @@ name: CI
 on:
   push:
     branches:
-      - master
+      - '**'
   pull_request:
-  workflow_dispatch:
-permissions:
-  actions: read
-  contents: read
+    branches:
+      - '**'
 
 jobs:
-  main:
+  ci:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
+      - name: Sprawdzenie repozytorium
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - uses: pnpm/action-setup@v2
+      - name: Ustawienie Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          cache: 'pnpm'
+
+      - name: Instalacja pnpm
+        uses: pnpm/action-setup@v2
         with:
           version: 8
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: 'pnpm'
+      - name: Instalacja zależności
+        run: pnpm install
 
-      - run: pnpm install --frozen-lockfile
+      - name: Uruchomienie Prettiera
+        run: pnpm run format
 
-      - uses: nrwl/nx-set-shas@v4
+      - name: Uruchomienie ESLinta
+        run: pnpm run lint
 
-      - run: npx nx affected -t lint test build
-
-  run-tests:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v2
-        with:
-          version: 8
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: 'pnpm'
-      - run: pnpm install --frozen-lockfile
-      - name: Run tests from __tests__ folders
-        run: pnpm nx run-many -t test --all --testPathPattern=__tests__
+      - name: Uruchomienie testów jednostkowych
+        run: pnpm run test

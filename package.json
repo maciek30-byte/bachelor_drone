@@ -1,12 +1,12 @@
 {
   "name": "@bachelor-drone/source",
-  "version": "0.0.0",
-  "license": "MIT",
-  "scripts": {
-    "format:check": "prettier --check .",
-    "lint": "eslint ."
-  },
+  "version": "1.0.0",
   "private": true,
+  "scripts": {
+    "format": "prettier --write .",
+    "lint": "eslint . --fix",
+    "test": "nx run-many --target=test --all --testPathPattern=__tests__"
+  },
   "dependencies": {
     "@reduxjs/toolkit": "^2.3.0",
     "react": "18.3.1",

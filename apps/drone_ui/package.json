@@ -3,22 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "targets": {
-  "format:check": {
-    "executor": "nx:run-commands",
-    "options": {
-      "command": "prettier --check apps/indicent_menager"
-    }
-  },
-  "lint": {
-    "executor": "nx:run-commands",
-    "options": {
-      "command": "eslint apps/indicent_menager"
-    }
-  }
-},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+
+ "scripts": {
+  "prettier": "prettier --write .",
+  "lint": "eslint . --fix",
+  "test": "jest"
   },
   "keywords": [],
   "author": "",
