@@ -3,13 +3,10 @@ name: CI
 on:
   push:
     branches:
-      - 'main'
-      - 'develop'
+      - '**'  # sprawdza wszystkie gałęzie
   pull_request:
-    types: [opened, synchronize, reopened]
     branches:
-      - 'main'
-      - 'develop'
+      - '**'  # sprawdza PR do wszystkich gałęzi
 
 jobs:
   quality:
@@ -44,4 +41,3 @@ jobs:
 
       - name: Run unit tests
         run: pnpm nx affected:test
-
