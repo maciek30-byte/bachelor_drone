@@ -1,10 +1,10 @@
 /// <reference types='vitest' />
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
+import { join } from 'path';
 import packageJson from './package.json';
 
-export default defineConfig({
+export const viteConfig = defineConfig({
   //base parameter we could use to set the base url of the application//
   build: {
     outDir: 'dist',
@@ -13,7 +13,7 @@ export default defineConfig({
     sourcemap: true,
   },
   root: __dirname,
-  plugins: [react(), nxViteTsPaths()],
+  plugins: [react()],
   define: {
     APP_VERSION: JSON.stringify(packageJson.version),
   },
@@ -33,4 +33,13 @@ export default defineConfig({
       provider: 'v8',
     },
   },
+  server: {
+    fs: {
+      allow: [
+        join(__dirname, '..', '..'), // Pozwól na dostęp do całego repozytorium
+      ],
+    },
+  },
 });
+
+export default viteConfig;
