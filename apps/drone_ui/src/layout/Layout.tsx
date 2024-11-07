@@ -9,7 +9,6 @@ import { Modal } from '../components/Modal/Modal';
 
 export const Layout = () => {
     //@TODO allocate this state when performance is not enough//
-    //@TODO get rid of this z-index//
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const handleOpenModal = () => {
@@ -18,7 +17,7 @@ export const Layout = () => {
 
     return (
         <div className="h-screen w-screen grid grid-cols-12 grid-rows-6 gap-4 p-4 bg-gray-100">
-            <div className="col-span-1 row-span-6 z-1">
+            <div className="col-span-1 row-span-6">
                 <Sidebar />
             </div>
 

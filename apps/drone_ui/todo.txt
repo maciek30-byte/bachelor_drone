@@ -1,0 +1,7 @@
+└─ bachelor_drone
+   ├─ components
+   │  └─ Sidebar.tsx
+   │     └─ line 2: @TODO get rid of this z-index investigate why i need z-50 it is insane related to Tailwand config//
+   └─ layout
+      └─ Layout.tsx
+         └─ line 11: @TODO allocate this state when performance is not enough//
