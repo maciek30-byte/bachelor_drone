@@ -10,7 +10,7 @@ export const Sidebar = () => {
     };
 
     return (
-        <div className="relative h-full z-50">
+        <div className=" h-full">
             {/* Sidebar */}
             <div
                 className={`bg-blue-500 h-full p-4 flex flex-col justify-between fixed top-0 left-0 transition-all duration-300 ease-in-out transform ${isOpen ? 'translate-x-0 w-64' : '-translate-x-full w-64'

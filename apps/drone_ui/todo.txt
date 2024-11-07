@@ -5,3 +5,4 @@
    └─ layout
       └─ Layout.tsx
          └─ line 11: @TODO allocate this state when performance is not enough//
+ └─ line 2: @TODO add map synchronization with  map on modal and map on Layout//
