@@ -11,7 +11,7 @@ export const Sidebar = () => {
         <div className="relative h-full">
             {/* Sidebar */}
             <div
-                className={`bg-base-200 h-full p-4 flex flex-col justify-between fixed top-0 left-0 transition-all duration-300 ease-in-out transform ${isOpen ? 'translate-x-0 w-64' : '-translate-x-full w-64'
+                className={`bg-base-20 h-full p-4 flex flex-col justify-between fixed top-0 left-0 transition-all duration-300 ease-in-out transform ${isOpen ? 'translate-x-0 w-64' : '-translate-x-full w-64'
                     }`}
             >
                 <div>

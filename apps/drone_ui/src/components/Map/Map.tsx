@@ -1,8 +1,7 @@
 export const Map = () => {
     return (
-        <div className="bg-gray-400 h-full p-4">
+        <div className="bg-gray-400 h-full ">
             {/* Main map content */}
-            <p className="text-center">Map Component</p>
         </div>
     );
 };
