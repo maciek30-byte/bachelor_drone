@@ -3,4 +3,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.leaflet-container {
+  z-index: 1 !important;
+}
+
+.leaflet-control-container {
+  z-index: 2 !important;
+}
+
+.leaflet-pane {
+  z-index: 1 !important;
+}
+
 /* You can add global styles to this file, and also import other style files */

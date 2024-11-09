@@ -7,10 +7,15 @@ export const MapComponent = () => {
 
   return (
     <div className="bg-gray-400 h-full w-full">
-    <MapContainer center={center} zoom={13} style={{ height: '100%', width: '100%' }}>
-      <TileLayer
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
+      <MapContainer 
+        center={center} 
+        zoom={13} 
+        style={{ height: '100%', width: '100%' }} 
+        className="leaflet-container"
+      >
+        <TileLayer
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
       </MapContainer>
     </div>
   );
