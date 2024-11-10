@@ -1,7 +1,4 @@
 {
-  "$schema": "./node_modules/nx/schemas/nx-schema.json",
-  "npmScope": "modular-monolith",
-  "extends": "@nx/workspace/presets/npm.json",
   "targetDefaults": {
     "test": {
       "inputs": ["default", "^production"]
@@ -10,6 +7,9 @@
       "inputs": ["default", "{workspaceRoot}/.eslintrc.json"]
     }
   },
+  "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "npmScope": "modular-monolith",
+  "extends": "@nx/workspace/presets/npm.json",
   "tasksRunnerOptions": {
     "default": {
       "runner": "nx/tasks-runners/default",
@@ -17,5 +17,21 @@
         "cacheableOperations": ["lint", "test", "format"]
       }
     }
-  }
+  },
+  "plugins": [
+    {
+      "plugin": "@nx/webpack/plugin",
+      "options": {
+        "buildTargetName": "build",
+        "serveTargetName": "serve",
+        "previewTargetName": "preview"
+      }
+    },
+    {
+      "plugin": "@nx/eslint/plugin",
+      "options": {
+        "targetName": "eslint:lint"
+      }
+    }
+  ]
 }
