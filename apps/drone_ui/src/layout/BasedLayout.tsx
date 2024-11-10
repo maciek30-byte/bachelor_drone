@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { Footer } from '../shared/Footer';
+import { Footer } from '../shared/Footer/Footer';
 import { Sidebar } from '../shared/Sidebar/Sidebar';
 import { Header } from '../shared/Header';
 interface BaseLayoutProps {

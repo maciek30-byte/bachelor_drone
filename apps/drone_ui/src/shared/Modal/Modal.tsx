@@ -1,5 +1,6 @@
-import { MapContainer } from '../Map/MapContainer';
 import { useState } from 'react';
+import { MapComponent } from '../../Features/Map/MapComponent';
+
 interface ModalProps {
   isMapExpanded: boolean;
   setIsMapExpanded: (value: boolean) => void;
@@ -30,7 +31,7 @@ export const Modal = ({ isMapExpanded, setIsMapExpanded }: ModalProps) => {
               X
             </button>
             <div className="flex justify-center items-center h-full">
-              <MapContainer />
+              <MapComponent />
             </div>
           </div>
         </div>
