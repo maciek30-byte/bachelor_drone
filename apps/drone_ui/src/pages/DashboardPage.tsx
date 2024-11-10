@@ -3,14 +3,12 @@ import { MapComponent } from '../Features/Map/MapComponent';
 import { KeyObjectives } from '../Features/Mission/KeyObjectives';
 import { SafetyPanel } from '../Features/SafetyPanel/SafetyPanel';
 import { DronesInfo } from '../Features/Drones/DronesInfo';
-import { AccordionWrapper } from '../shared/AccordionListWrapper';
+import { AccordionWrapper } from '../shared/Accordion/AccordionWrapper';
 
 //@TODO get rid of use state logic from there//
 
 export const DashboardPage = () => {
-  const [activeList, setActiveList] = useState<'decisions' | 'incidents'>(
-    'incidents',
-  );
+
 
   return (
     <div className="grid grid-cols-10 h-screen bg-ai-dark p-2">
@@ -30,10 +28,7 @@ export const DashboardPage = () => {
 
       <div className="col-span-5 flex flex-col gap-4 pl-2">
         <div className="h-[48%]">
-          <AccordionWrapper
-            activeList={activeList}
-            setActiveList={setActiveList}
-          />
+          <AccordionWrapper />
         </div>
 
         <div className="h-[33%] bg-ai-gray/20 border border-ai-light rounded-lg">
