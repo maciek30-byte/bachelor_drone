@@ -1,16 +1,16 @@
-import { Routes, Route } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { BaseLayout } from '../layout/BasedLayout';
-import { Dashboard } from '../layout/Dashboard';
-import { MissionCreator } from '../components/Forms/CreateMission/CreateMissionForm';
-import { NotificationCenter } from '../components/NotificationCenter/NotificationCenter';
+import { CreateMissionPage } from '../pages/CreateMissionPage';
+import { DashboardPage } from '../pages/DashboardPage';
+import { NotificationsListPage } from '../pages/NotificationsListPage';
 
 export function App() {
   return (
     <BaseLayout>
       <Routes>
-        <Route path="/" element={<Dashboard />} />
-        <Route path="/missions/create" element={<MissionCreator />} />
-        <Route path="/notifications" element={<NotificationCenter isWidget={false} />} />
+        <Route path="/" element={<DashboardPage />} />
+        <Route path="/missions/create" element={<CreateMissionPage />} />
+        <Route path="/notifications" element={<NotificationsListPage />} />
       </Routes>
     </BaseLayout>
   );

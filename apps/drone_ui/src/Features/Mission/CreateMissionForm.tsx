@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { MapComponent } from '../../Map/MapComponent';
-import { DroneTeamForm } from '../DroneTeamForm';
-export const MissionCreator = () => {
+import { DroneTeamForm } from './DroneTeamForm';
+import { MapComponent } from '../Map/MapComponent';
+
+export const CreateMissionForm = () => {
   const navigate = useNavigate();
   const [showMap, setShowMap] = useState(false);
   const [selectedDrones, setSelectedDrones] = useState<string[]>([]);
@@ -26,11 +27,18 @@ export const MissionCreator = () => {
       selectedDrones,
       timestamp: new Date().toISOString() 
     });
+    navigate('/missions');
+  };
+
+  const handleCancel = () => {
+    if (window.confirm('Are you sure you want to cancel? All progress will be lost.')) {
+      navigate('/missions');
+    }
   };
 
   return (
-    <div className="min-h-screen bg-base-200 flex items-center justify-center p-4">
-      <div className="card bg-base-100 shadow-xl max-w-3xl w-full">
+    <div className="p-4 overflow-y-auto">
+      <div className="card bg-base-100 shadow-xl max-w-5xl w-full mx-auto my-8">
         <div className="card-body space-y-6">
           {/* Header */}
           <div className="border-b border-base-300 pb-4">
@@ -212,16 +220,27 @@ export const MissionCreator = () => {
               ></textarea>
             </div>
 
-            {/* Submit Button */}
-            <div className="card-actions justify-end mt-6 pt-4 border-t border-base-300">
+            {/* Updated buttons section */}
+            <div className="card-actions justify-between mt-6 pt-4 border-t border-base-300">
               <button 
                 type="button" 
-                className="btn btn-ghost"
-                onClick={() => navigate('/missions')}
+                className="btn btn-error btn-outline"
+                onClick={handleCancel}
               >
-                Cancel
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+                Cancel Mission
               </button>
-              <button type="submit" className="btn btn-primary">Create Mission</button>
+              <button 
+                type="submit" 
+                className="btn btn-primary"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+                Accept Parameters
+              </button>
             </div>
           </form>
         </div>

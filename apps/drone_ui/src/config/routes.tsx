@@ -1,7 +1,7 @@
 import { Dashboard } from '../layout/Dashboard';
-import { MissionCreator } from '../components/Forms/CreateMission/CreateMissionForm';
-import { MissionList } from '../components/MissionList/MissionList';
-import { NotificationCenter } from '../components/NotificationCenter/NotificationCenter';
+import { CreateMissionForm } from '../components/Forms/CreateMission/CreateMissionForm';
+import { MissionList } from '../Features/Mission/MissionList';
+import { NotificationsList } from '../Features/Notifications/NotificationsList';
 export const routes = [
   {
     path: "/",
@@ -9,7 +9,7 @@ export const routes = [
   },
   {
     path: "/missions/create",
-    element: <MissionCreator />,
+    element: <CreateMissionForm />,
   },
   {
     path: "/missions",
@@ -17,6 +17,6 @@ export const routes = [
   },
   {
     path: "/notifications",
-    element: <NotificationCenter />,
+    element: <NotificationsList />,
   }
 ];

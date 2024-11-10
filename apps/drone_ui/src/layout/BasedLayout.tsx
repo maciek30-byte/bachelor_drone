@@ -1,32 +1,21 @@
 import { ReactNode } from 'react';
-import { Header } from '../components/Header/Header';
-import { Footer } from '../components/Footer/Footer';
-import { Sidebar } from '../components/Sidebar/Sidebar';
-
+import { Footer } from '../shared/Footer';
+import { Sidebar } from '../shared/Sidebar/Sidebar';
+import { Header } from '../shared/Header';
 interface BaseLayoutProps {
   children: ReactNode;
 }
 
 export const BaseLayout = ({ children }: BaseLayoutProps) => {
   return (
-    <div className="min-h-screen grid grid-rows-[auto_1fr_auto] bg-base-200 relative z-0">
-      {/* Header */}
+    <div className="h-screen grid grid-rows-[auto_1fr_auto] bg-base-200">
       <Header />
-
-      {/* Main Content Area with Sidebar */}
-      <div className="flex overflow-hidden relative">
-        {/* Sidebar */}
-        <div className="relative z-30">
+      <div className="flex overflow-hidden">
+        <div className="relative">
           <Sidebar />
         </div>
-        
-        {/* Main Content */}
-        <main className="flex-1 relative z-10">
-          {children}
-        </main>
+        <main className="flex-1">{children}</main>
       </div>
-
-      {/* Footer */}
       <Footer />
     </div>
   );

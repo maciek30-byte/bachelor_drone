@@ -11,7 +11,7 @@ interface Notification {
   source: 'mission' | 'drone' | 'system' | 'ai';
 }
 
-export const NotificationCenter = ({ isWidget = false }) => {
+export const NotificationsList = ({ isWidget = false }) => {
   const navigate = useNavigate();
   const [filter, setFilter] = useState<'all' | 'unread'>('all');
   const [typeFilter, setTypeFilter] = useState<Notification['type'] | 'all'>('all');
