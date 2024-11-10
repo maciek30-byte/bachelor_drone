@@ -1,13 +1,30 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { DroneTeamForm } from './DroneTeamForm';
-import { MapComponent } from '../Map/MapComponent';
+import { DroneTeamForm } from '../DroneTeamForm';
+import { MapComponent } from '../../Map/MapComponent';
+import { MissionHeader } from './StaticElements';
+import { MissionArea } from './MissionArea';
+import { FormControl } from './FormUtils';
+//@TODO do not forget about drone mission part
+
+export interface MissionData {
+    name: string;
+    area: string;
+    type: string;
+    priority: string;
+    dronesRequired: number;
+    startDateTime: string;
+    duration: string;
+    batteryOptimization: boolean;
+    aiDecisions: boolean;
+    notes: string;
+}
 
 export const CreateMissionForm = () => {
   const navigate = useNavigate();
   const [showMap, setShowMap] = useState(false);
   const [selectedDrones, setSelectedDrones] = useState<string[]>([]);
-  const [missionData, setMissionData] = useState({
+  const [missionData, setMissionData] = useState<MissionData>({
     name: '',
     area: '',
     type: '',
@@ -41,17 +58,9 @@ export const CreateMissionForm = () => {
       <div className="card bg-base-100 shadow-xl max-w-5xl w-full mx-auto my-8">
         <div className="card-body space-y-6">
           {/* Header */}
-          <div className="border-b border-base-300 pb-4">
-            <h2 className="card-title text-2xl font-bold">Create New Mission</h2>
-            <p className="text-base-content/60 mt-1">Fill in the details to create a new drone mission</p>
-          </div>
-          
+          <MissionHeader />
           <form onSubmit={handleSubmit} className="space-y-6">
-            {/* Mission Name */}
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text font-medium">Mission Name</span>
-              </label>
+            <FormControl label="Mission Name" hint="Enter descriptive mission name">
               <input 
                 type="text" 
                 className="input input-bordered w-full" 
@@ -60,40 +69,13 @@ export const CreateMissionForm = () => {
                 onChange={(e) => setMissionData({...missionData, name: e.target.value})}
                 required
               />
-            </div>
-
-            {/* Mission Area with Map */}
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text font-medium">Mission Area</span>
-                <span className="label-text-alt text-info">AI Suggested: Zone B</span>
-              </label>
-              <div className="flex gap-2">
-                <select 
-                  className="select select-bordered flex-1"
-                  value={missionData.area}
-                  onChange={(e) => setMissionData({...missionData, area: e.target.value})}
-                  required
-                >
-                  <option value="">Select area</option>
-                  <option value="zone-a">Zone A</option>
-                  <option value="zone-b">Zone B</option>
-                  <option value="zone-c">Zone C</option>
-                </select>
-                <button 
-                  type="button"
-                  className="btn btn-square btn-outline"
-                  onClick={() => setShowMap(!showMap)}
-                >
-                  🗺️
-                </button>
-              </div>
-              {showMap && (
-                <div className="mt-2 h-64 rounded-box overflow-hidden border border-base-300">
-                  <MapComponent />
-                </div>
-              )}
-            </div>
+            </FormControl>
+           <MissionArea 
+            missionData={missionData}
+            setMissionData={setMissionData}
+            showMap={showMap}
+            setShowMap={setShowMap}
+           />
 
             <div className="divider"></div>
 
@@ -172,10 +154,10 @@ export const CreateMissionForm = () => {
 
             <div className="divider">Drone Team Selection</div>
             
-            <DroneTeamForm 
+            {/* <DroneTeamForm 
               selectedDrones={selectedDrones}
               onDroneSelectionChange={setSelectedDrones}
-            />
+            /> */}
 
             <div className="divider"></div>
 
