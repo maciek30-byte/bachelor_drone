@@ -1,15 +1,7 @@
 import { IsString, IsNumber, IsBoolean, IsDateString, IsNotEmpty, Min, Max } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 
-//@TODO narrow this typee, find god place for types//
 
-export interface Mission {
-  id: string;
-  name: string;
-  area: string;
-  type: string;
-  priority: string;
-}
 
 export class CreateMissionDto {
   @ApiProperty({ example: 'Coastal Survey', description: 'Name of the mission' })

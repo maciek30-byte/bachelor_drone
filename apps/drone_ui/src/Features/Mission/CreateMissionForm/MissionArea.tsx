@@ -1,10 +1,10 @@
 import { MapComponent } from "../../Map/MapComponent";
-import { MissionData } from "./CreateMissionForm";
+import { Mission } from "../missionTypes";
 import { FormControl } from "./FormUtils";
 
 interface MissionAreaProps {
-    missionData:MissionData;
-    setMissionData: (data: MissionData) => void;
+    missionData:Mission;
+    setMissionData: (data: Mission) => void;
     showMap: boolean;
     setShowMap: (show: boolean) => void;
 }

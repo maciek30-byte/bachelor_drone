@@ -5,12 +5,14 @@ interface FormControlProps {
   }
   
   export const FormControl = ({ label, hint, children }: FormControlProps) => (
-    <div className="form-control">
-      <label className="label">
-        <span className="label-text font-medium">{label}</span>
-        {hint && <span className="label-text-alt text-info">{hint}</span>}
-      </label>
-      {children}
+    <div className="form-control w-full gap-2 mb-4 hover:bg-base-200 p-2 rounded-lg transition-colors">
+      <div className="flex justify-between items-center">
+        <div>
+          <div className="label-text font-medium">{label}</div>
+          {hint && <div className="label-text-alt text-sm opacity-70">{hint}</div>}
+        </div>
+        {children}
+      </div>
     </div>
   );
 

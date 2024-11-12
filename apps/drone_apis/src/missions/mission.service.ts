@@ -1,5 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { CreateMissionDto, Mission } from './dto/create-missions.dto';
+import { CreateMissionDto, } from './dto/create-missions.dto';
+import { Mission } from './mission.types';
 
 @Injectable()
 export class MissionsService {
