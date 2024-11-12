@@ -1,53 +1,58 @@
-import { IsString, IsNumber, IsBoolean, IsDateString, IsNotEmpty, Min, Max } from 'class-validator';
+import { IsString, IsNumber, IsBoolean, IsDateString, IsNotEmpty, Min, Max, IsEnum } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
+  
+
+enum MissionType {
+  SURVEILLANCE = 'surveillance',
+  DELIVERY = 'delivery',
+  INSPECTION = 'inspection',
+  MAPPING = 'mapping',
+  EMERGENCY = 'emergency'
+}
+
+enum MissionPriority {
+  LOW = 'low',
+  MEDIUM = 'medium',
+  HIGH = 'high',
+  CRITICAL = 'critical'
+}
 
 
 
 export class CreateMissionDto {
-  @ApiProperty({ example: 'Coastal Survey', description: 'Name of the mission' })
-  @IsString()
-  @IsNotEmpty()
+  @ApiProperty({ description: 'Mission name' })
   name: string;
 
-  @ApiProperty({ example: 'North Coast', description: 'Area of operation' })
-  @IsString()
-  @IsNotEmpty()
+  @ApiProperty({ description: 'Mission area' })
   area: string;
 
-  @ApiProperty({ example: 'Surveillance', description: 'Type of mission' })
-  @IsString()
-  @IsNotEmpty()
-  type: string;
+  @ApiProperty({
+    enum: ['surveillance', 'delivery', 'inspection', 'mapping', 'emergency'],
+    description: 'Type of mission'
+  })
+  type: MissionType;
 
-  @ApiProperty({ example: 'High', description: 'Mission priority level' })
-  @IsString()
-  @IsNotEmpty()
-  priority: string;
+  @ApiProperty({
+    enum: ['low', 'medium', 'high', 'critical'],
+    description: 'Mission priority level'
+  })
+  priority: MissionPriority;
 
-  @ApiProperty({ example: 2, description: 'Number of drones required' })
-  @IsNumber()
-  @Min(1)
-  @Max(10)
+  @ApiProperty({ description: 'Number of drones required' })
   dronesRequired: number;
 
-  @ApiProperty({ example: '2024-03-20T10:00:00Z', description: 'Mission start date and time' })
-  @IsDateString()
-  startDateTime: string;
+  @ApiProperty({ description: 'Mission duration in minutes' })
+  duration: number;
 
-  @ApiProperty({ example: '2h', description: 'Expected mission duration' })
-  @IsString()
-  @IsNotEmpty()
-  duration: string;
-
-  @ApiProperty({ example: true, description: 'Enable battery optimization' })
-  @IsBoolean()
+  @ApiProperty({ description: 'Enable battery optimization' })
   batteryOptimization: boolean;
 
-  @ApiProperty({ example: true, description: 'Enable AI-assisted decisions' })
-  @IsBoolean()
+  @ApiProperty({ description: 'Enable AI-assisted decisions' })
   aiDecisions: boolean;
 
-  @ApiProperty({ example: 'Avoid residential areas', description: 'Additional mission notes' })
-  @IsString()
+  @ApiProperty({ description: 'Additional mission notes' })
   notes: string;
+
+  @ApiProperty({ description: 'Mission start date and time' })
+  startDateTime: string;
 }

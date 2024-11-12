@@ -1,30 +1,19 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
-import { CreateMissionDto, } from './dto/create-missions.dto';
-import { Mission } from './mission.types';
+import { Injectable, Logger } from '@nestjs/common';
+import { CreateMissionDto } from './dto/create-missions.dto';
 
 @Injectable()
-export class MissionsService {
-  private missions: Mission[] = [];
+export class MissionService {
+  private readonly logger = new Logger(MissionService.name);
 
-  create(createMissionDto: CreateMissionDto) {
-    const mission = {
-      id: (this.missions.length + 1).toString(),
-      ...createMissionDto,
-      createdAt: new Date().toISOString(),
+  async createMission(createMissionDto: CreateMissionDto) {
+    // Log the received mission data
+    this.logger.log('Received new mission request:');
+    this.logger.log(JSON.stringify(createMissionDto, null, 2));
+
+    // For now, just return the received data
+    return {
+      message: 'Mission received successfully',
+      data: createMissionDto
     };
-    this.missions.push(mission);
-    return mission;
   }
-
-  findAll() {
-    return this.missions;
-  }
-
-  findOne(id: string) {
-    const mission = this.missions.find(m => m.id === id);
-    if (!mission) {
-      throw new NotFoundException(`Mission with ID ${id} not found`);
-    }
-    return mission;
-  }
-}   
+}
