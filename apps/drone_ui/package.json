@@ -10,5 +10,9 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@nestjs/swagger": "^8.0.5",
+    "swagger-ui-express": "^5.0.1"
+  }
 }

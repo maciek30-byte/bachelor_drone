@@ -4,15 +4,18 @@
   "private": true,
   "scripts": {
     "format": "nx format:write",
-  "lint": "eslint . --config eslint.config.js",
+    "lint": "eslint . --config eslint.config.js",
     "test": "nx run-many --target=test --all --testPathPattern=__tests__"
   },
   "dependencies": {
     "@nestjs/common": "^10.0.2",
     "@nestjs/core": "^10.0.2",
     "@nestjs/platform-express": "^10.0.2",
+    "@nestjs/swagger": "^8.0.5",
     "@reduxjs/toolkit": "^2.3.0",
     "axios": "^1.6.0",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.1",
     "daisyui": "^4.12.13",
     "leaflet": "^1.9.4",
     "react": "18.3.1",
