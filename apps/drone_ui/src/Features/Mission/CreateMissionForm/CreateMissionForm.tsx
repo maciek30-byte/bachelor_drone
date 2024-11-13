@@ -8,7 +8,6 @@ import { ButtonsSection } from './sections/ButtonsSection';
 import { HeaderSection } from './sections/HeaderSection';
 import { MainAssumptionSection } from './sections/MainAssumptionSection';
 import { MissionDetailsSection } from './sections/MissionDetailsSection';
-import { TimeAndDurationSection } from './sections/TimeAndDurationSection';
 import { DroneTeamForm } from '../DroneTeamForm';
 //TODO it should be two steps form or even 3 or for steps form : basic, drone team, apply Ai decisions//
 
@@ -45,14 +44,12 @@ export const CreateMissionForm = () => {
                 />
               </div>
 
-              {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <TimeAndDurationSection
-                  missionData={values}
-                  setMissionData={setValues}
-                />
-              </div> */}
-
               <div className="divider">Drone Team Selection</div>
+              {/* <DroneTeamForm
+                selectedDrones={selectedDrones}
+                onDroneSelectionChange={setSelectedDrones}
+              /> */}
+              <span style={{color:"pink", fontSize:"24px"}}>Drone team will be suggested with AI assistant</span>
 
               <div className="divider"></div>
 
@@ -61,7 +58,7 @@ export const CreateMissionForm = () => {
                   missionData={values}
                   setMissionData={setValues}
                 />
-              </div>   
+              </div>
 
               <FormControl
                 label="Mission Notes"
