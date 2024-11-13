@@ -1,4 +1,8 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { MissionService } from '../../api/MissionService';
+import { useFetch } from '../../hooks/useFetch';
+
+const BASE_URL = "http://localhost:3000/api";
 
 interface Mission {
   id: string;
@@ -44,6 +48,11 @@ export const MissionList = () => {
       default: return 'badge-ghost';
     }
   };
+
+  const {data, loading, error} = useFetch<Mission[]>({url: `${BASE_URL}/missions`});
+  console.log(" this is a mission whoole list", data);
+
+
 
   return (
     <div className="flex h-screen bg-base-200">
