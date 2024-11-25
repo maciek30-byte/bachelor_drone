@@ -2,5 +2,6 @@ import { CreateMissionForm } from '../Features/Mission/CreateMissionForm/CreateM
 export const CreateMissionPage = () => {
   return (
     <CreateMissionForm />
+    </MissionFormContextProvider>
   )
 };
