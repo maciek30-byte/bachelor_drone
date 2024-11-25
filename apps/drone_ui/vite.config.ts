@@ -40,6 +40,11 @@ export const viteConfig = defineConfig({
       ],
     },
   },
+  resolve: {
+    alias: {
+      '@libs/ZOD_SCHEMAS': join(__dirname, '../../libs/ZOD_SCHEMAS/src/index.ts')
+    }
+  }
 });
 
 export default viteConfig;

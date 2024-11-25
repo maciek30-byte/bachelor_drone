@@ -1,5 +1,5 @@
 import { FormControl } from '../FormUtils';
-import { MissionArea } from '../MissionArea';
+import { MissionArea } from './MissionArea';
 import { Mission } from '../../missionTypes';
 export const MainAssumptionSection = ({
   missionData,

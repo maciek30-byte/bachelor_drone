@@ -1,6 +1,6 @@
-import { MapComponent } from "../../Map/MapComponent";
+import { MapComponent } from "../../../Map/MapComponent";
 import { Mission } from "../missionTypes";
-import { FormControl } from "./FormUtils";
+import { FormControl } from "../FormUtils";
 
 interface MissionAreaProps {
     missionData:Mission;

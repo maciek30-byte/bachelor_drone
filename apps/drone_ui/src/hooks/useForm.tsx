@@ -3,11 +3,14 @@ import { useNavigate } from 'react-router-dom';
 
 interface FormOptions<T> {
   initialValues: T;
+  currentStep: number;
   navigatePath?: string;
+
 }
 
 export function useForm<T>({ initialValues, navigatePath }: FormOptions<T>) {
   const [values, setValues] = useState<T>(initialValues);
+  const [currentStep, setCurrentStep] = useState<number>(1);
   const navigate = useNavigate();
 
   const handleChange = (
@@ -54,5 +57,7 @@ export function useForm<T>({ initialValues, navigatePath }: FormOptions<T>) {
     handleCancel,
     setValues,
     resetForm,
+    currentStep,
+    setCurrentStep,
   };
 }

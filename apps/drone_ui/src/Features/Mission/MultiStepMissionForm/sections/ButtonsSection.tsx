@@ -1,4 +1,4 @@
-export const ButtonsSection = ({handleCancel}: {handleCancel: () => void}) => {
+export const ButtonsSection = ({handleCancel, handleSubmit}: {handleCancel: () => void, handleSubmit: () => void}) => {
   return (
     <div className="card-actions justify-between mt-6 pt-4 border-t border-base-300">
     <button
@@ -22,7 +22,7 @@ export const ButtonsSection = ({handleCancel}: {handleCancel: () => void}) => {
       </svg>
       Cancel Mission
     </button>
-    <button type="submit" className="btn btn-primary">
+    <button type="submit" className="btn btn-primary" onClick={handleSubmit}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         className="h-6 w-6 mr-2"

@@ -1,5 +1,4 @@
 {
-  "compileOnSave": false,
   "compilerOptions": {
     "rootDir": ".",
     "sourceMap": true,
@@ -14,7 +13,9 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@libs/ZOD_SCHEMAS": ["libs/ZOD_SCHEMAS/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

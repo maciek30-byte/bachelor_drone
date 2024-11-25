@@ -1,18 +1,14 @@
-import { Mission } from "../missionTypes";
 import { SelectOption } from "./FormUtils";
+import { MissionFormType } from "@libs/ZOD_SCHEMAS";
 
-export const INITIAL_FORM_VALUES: Mission = {
-  name: '',
-  area: '',
-  type: 'mapping',
-  priority: 'low',
-  dronesRequired: 1,
+export const INITIAL_FORM_VALUES: MissionFormType = {
+  name: "",
+  area: "zone-a",
+  type: "surveillance",
+  priority: "low",
   duration: 0,
-  batteryOptimization: false,
-  aiDecisions: false,
-  notes: '',
   startDateTime: '',
-} ;
+}
 
 export const missionTypeSelectOptions: SelectOption[] = [
     { value: 'surveillance', label: 'Surveillance' },

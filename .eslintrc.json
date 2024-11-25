@@ -19,7 +19,7 @@
               },
               {
                 "sourceTag": "type:lib",
-                "onlyDependOnLibsWithTags": []
+                "onlyDependOnLibsWithTags": ["scope:shared"]
               }
             ]
           }

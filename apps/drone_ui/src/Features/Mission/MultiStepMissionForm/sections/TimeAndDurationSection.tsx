@@ -1,7 +1,6 @@
 import { FormControl } from "../FormUtils"
-import { Mission } from "../../missionTypes"
-
-export const TimeAndDurationSection = ({missionData, setMissionData}: {missionData: Mission, setMissionData: (mission: Mission) => void}) => {
+import { MissionFormData } from "../FormWrapper"
+export const TimeAndDurationSection = ({missionData, setMissionData}: {missionData: MissionFormData, setMissionData: (mission: MissionFormData) => void}) => {
     return (
         <>
         <FormControl
@@ -21,9 +20,9 @@ export const TimeAndDurationSection = ({missionData, setMissionData}: {missionDa
                   required
                 />
               </FormControl>
-              <FormControl label="Duration" hint="Select duration">
+              <FormControl label="Duration in miliseconds" hint="Select duration in miliseconds">
                 <input
-                  type="datetime-local"
+                  type="number"
                   className="input input-bordered"
                   value={missionData.startDateTime}
                   onChange={(e) =>
